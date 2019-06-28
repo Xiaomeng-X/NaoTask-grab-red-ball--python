@@ -28,4 +28,4 @@ self.frameWidth = frame[0] self.frameHeight = frame[1] self.frameChannels = fram
 channelR = self.frameArray[:,:,2] channelR[channelR<150] = 0 channelR[channelR>255] = 255 channelR = cv2.GaussianBlur(channelR, (9,9), 1.5) grayFrame = np.uint8(np.round(channelR)) circles = self.__findCircles(grayFrame, minDist, minRadius, maxRadius) circle = self.__selectCircle(circles) self.ballData = {"centerX":circle[0][0], "centerY":circle[0][1], "radius":circle[0][2]}
 
 整体（除了避障）流程图：
-![IMAGE2](https://github.com/Xiaomeng-X/NaoTask-grab-red-ball--python/blob/master/NAO开发部分流程图.jpg)
+![IMAGE2](https://github.com/Xiaomeng-X/NaoTask-grab-red-ball--python/blob/master/NAO开发部分流程图.png)
