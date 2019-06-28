@@ -1,0 +1,8 @@
+topic: ~ExampleDialog()
+language: mnc
+
+u:(你能蹲下吗)好的，我蹲下 ^call(ALMemory.insertData('dialog_message','crouch'))
+u:(你能站起来吗)好的，我站起来 ^call(ALMemory.insertData('dialog_message','stand up'))
+u:(你能坐下吗)好的，我坐下 ^call(ALMemory.insertData('dialog_message','sit down'))
+u:(拿红球)好的，我去抓个红球 ^call(ALMemory.insertData('dialog_message','red ball'))
+u:(拿绿球)好的，我去抓个绿球 ^call(ALMemory.insertData('dialog_message','green ball'))
