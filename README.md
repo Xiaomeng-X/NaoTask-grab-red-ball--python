@@ -44,7 +44,8 @@ def getAnswered(self,key,value,message):
 移动距离搜索：doSearch()方法  
   
 # 三、短距离导航模块：NavigateToObj.py   
-说明：该模块在目标搜索模块查找成功后运行，根据视觉检测到的obj在画面中的位置，确定是否向前移动和调整位移方向。该模块包含两个摄像头的应用。远距离时调用上面的摄像头获取实时图像，当物体在图像上的位置超过设定阈值时，则切换到下面的摄像头继续近距离的识别。  
+说明：该模块在目标搜索模块查找成功后运行，根据视觉检测到的obj在画面中的位置，确定是否向前移动和调整位移方向。该模块包含两个摄像头的应用。远距离时调用上面的摄像头获取实时图像，当物体在图像上的位置超过设定阈值时，则切换到下面的摄像头继续近距离的识别。   
+![IMAGE3](https://github.com/Xiaomeng-X/NaoTask-grab-red-ball--python/blob/master/近距离导航流程图.png)  
   
 远距离：   
 ballDetect.changeCameraId(vd.kTopCamera)   
@@ -78,6 +79,7 @@ motion.angleInterpolationBezier(names, times, keys)
   
 # 五、视觉模块：VisualTask.py   
 说明：基于颜色分割图像，设置阈值，将单通道图像转化为二值图像，对二值图像做一个高斯模糊，使用霍夫圆检测函数提取多个圆构成的数组，遍历数组并提取最适合的圆作为正确检测对象，并获取该对象在图像中的位置  
+![IMAGE4](https://github.com/Xiaomeng-X/NaoTask-grab-red-ball--python/blob/master/红球检测流程图.png)    
   
 例如：提取红色小球   
 cameraProxy = ALProxy("ALVideoDevice", self.IP, self.PORT)   
