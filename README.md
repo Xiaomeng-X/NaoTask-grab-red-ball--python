@@ -2,6 +2,7 @@
 包括内置语音模块的调用、短视野范围目标搜寻模块，短距离导航模块、姿态调整、抓取模块，其中视觉识别部分主要用到了opencv的霍夫圆检测函数
 
 ![IMAGE1](https://github.com/Xiaomeng-X/NaoTask-grab-red-ball--python/blob/master/NAO开发思维导图.png)
+
 一、语音对话模块：DialogModule.py 说明：该模块主要调用了nao的内置对话的api，包括一些重要函数
 
 1、topic的加载、激活、对话引擎的启动和卸载、解除激活、引擎的停止，这些部分分别调用了6个函数 dialog = ALProxy("ALDialog", robot_ip, robot_port) 1）topic = dialog.loadTopic(self.file_path.encode('utf-8')) 2）dialog.activateTopic(topic) 3）dialog.subscribe("target") 4）dialog.unloadTopic(topic) 5）dialog.deactivateTopic(topic) 6）dialog.unsubscribe("target")
@@ -25,3 +26,6 @@
 self.frameWidth = frame[0] self.frameHeight = frame[1] self.frameChannels = frame[2] self.frameArray = np.frombuffer(frame[6], dtype=np.uint8).reshape([frame[1],frame[0],frame[2]])
 
 channelR = self.frameArray[:,:,2] channelR[channelR<150] = 0 channelR[channelR>255] = 255 channelR = cv2.GaussianBlur(channelR, (9,9), 1.5) grayFrame = np.uint8(np.round(channelR)) circles = self.__findCircles(grayFrame, minDist, minRadius, maxRadius) circle = self.__selectCircle(circles) self.ballData = {"centerX":circle[0][0], "centerY":circle[0][1], "radius":circle[0][2]}
+
+整体（除了避障）流程图：
+![IMAGE2](https://github.com/Xiaomeng-X/NaoTask-grab-red-ball--python/blob/master/NAO开发部分流程图.jpg)
